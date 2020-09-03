@@ -1,4 +1,4 @@
-package com.raccon.backjoon.sort;
+package com.raccon.backjoon.backtracking;
 
 import java.io.BufferedReader;
 import java.io.IOException;
