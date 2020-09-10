@@ -1,4 +1,4 @@
-package com.raccon.backjoon.wordSort;
+package com.raccon.backjoon.sort.wordSort;
 
 import java.io.BufferedReader;
 import java.io.IOException;
