@@ -12,17 +12,17 @@ public class Area {
     public void solution(int[][] map) {
         Queue<Integer> queue = new PriorityQueue<>();
         int area = 2;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if(map[i][j] == 1){
-                    queue.add(findArea(map, area, new int[] {i, j}));
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map.length; j++) {
+                if (map[i][j] == 1) {
+                    queue.add(findArea(map, area, new int[]{i, j}));
                     area++;
                 }
             }
         }
 
         System.out.println(queue.size());
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             System.out.println(queue.poll());
         }
     }
@@ -33,26 +33,26 @@ public class Area {
         queue.add(point);
 
         int nextX = 0, nextY = 0;
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             int[] currentPoint = queue.poll();
 
-            if(map[currentPoint[0]][currentPoint[1]] > 1){
+            if (map[currentPoint[0]][currentPoint[1]] > 1) {
                 continue;
             }
 
             map[currentPoint[0]][currentPoint[1]] = area;
             count++;
 
-            for(int i=0; i<4; i++){
+            for (int i = 0; i < 4; i++) {
                 nextY = currentPoint[0] + moveY[i];
                 nextX = currentPoint[1] + moveX[i];
 
-                if((nextX < 0) || (nextX >= map.length) || (nextY < 0) || (nextY >= map.length)){
+                if ((nextX < 0) || (nextX >= map.length) || (nextY < 0) || (nextY >= map.length)) {
                     continue;
                 }
 
-                if(map[nextY][nextX] == 1){
-                    queue.add(new int[] {nextY, nextX});
+                if (map[nextY][nextX] == 1) {
+                    queue.add(new int[]{nextY, nextX});
                 }
             }
         }
