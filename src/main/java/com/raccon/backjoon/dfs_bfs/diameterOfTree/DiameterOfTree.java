@@ -37,15 +37,15 @@ public class DiameterOfTree {
     private int[] dfs(int node, int weight){
         int[] result = {node, weight};
 
-        for(int i=0; i<map.get(node).size(); i++){
-            if(!visited[map.get(node).get(i)[0]]) {
-                visited[map.get(node).get(i)[0]] = true;
-                int[] temp = dfs(map.get(node).get(i)[0], weight + map.get(node).get(i)[1]);
+        for(int[] edge : map.get(node)){
+            if(!visited[edge[0]]) {
+                visited[edge[0]] = true;
+                int[] temp = dfs(edge[0], weight + edge[1]);
                 if(result[1] < temp[1]){
                     result = temp;
                 }
 
-                visited[map.get(node).get(i)[0]] = false;
+                visited[edge[0]] = false;
             }
         }
 
