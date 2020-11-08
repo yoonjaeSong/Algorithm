@@ -1,4 +1,4 @@
-package com.raccon.backjoon.dynamic.sequenceMax;
+package com.raccon.backjoon.binray.sequenceMax;
 
 import java.util.ArrayList;
 import java.util.List;
