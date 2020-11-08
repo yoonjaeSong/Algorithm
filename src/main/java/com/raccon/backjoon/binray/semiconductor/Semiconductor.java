@@ -1,6 +1,7 @@
 package com.raccon.backjoon.binray.semiconductor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 // 반도체 설계 (2352)
@@ -18,7 +19,7 @@ public class Semiconductor {
             if(list.get(list.size()-1) > ports[i]){
                 index = lowerBoundary(list, ports[i]);
                 list.set(index, ports[i]);
-                memory[i] = index;
+                memory[i] = index + 1;
                 continue;
             }
 
