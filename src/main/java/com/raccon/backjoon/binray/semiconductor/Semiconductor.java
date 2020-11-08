@@ -27,6 +27,8 @@ public class Semiconductor {
             memory[i] = list.size();
         }
 
+        System.out.println(Arrays.toString(tracking(ports, memory, list.size())));
+
         return list.size();
     }
 
@@ -43,5 +45,18 @@ public class Semiconductor {
         }
 
         return end;
+    }
+
+    private int[] tracking(int[] ports, int[] memory, int length){
+        int[] result = new int[length];
+
+        for(int i=memory.length-1; i>= 0; i--){
+            if(memory[i] == length){
+                result[length-1] = ports[i];
+                length--;
+            }
+        }
+
+        return result;
     }
 }
