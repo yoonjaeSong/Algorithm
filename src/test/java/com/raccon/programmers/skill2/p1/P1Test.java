@@ -1,8 +1,8 @@
 package com.raccon.programmers.skill2.p1;
 
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class P1Test {
 
@@ -12,6 +12,6 @@ public class P1Test {
         String skill = "CBD";
         String[] skillTree = {"BACDE", "CBADF", "AECB", "BDA"};
 
-        assertEquals(p1.solution(skill, skillTree), 2);
+        Assertions.assertEquals(p1.solution(skill, skillTree), 2);
     }
 }
