@@ -1,5 +1,8 @@
 package com.raccon.datastructure.Trie;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Trie {
 
     private Node root;
@@ -38,8 +41,43 @@ public class Trie {
         return current.isLeaf();
     }
 
-    private int toInteger(char s) {
-        return s - 'a';
+    public List<String> autoComplete(String word) {
+        Node current = root;
+        List<String> result = new LinkedList<>();
+
+        for (char s : word.toCharArray()) {
+            int index = toInteger(s);
+            if (!current.isExisted(index)) {
+                return result;
+            }
+
+            current = current.getChild(index);
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (!current.isExisted(i)) {
+                continue;
+            }
+
+            getWord(result, current.getChild(i), word, i);
+        }
+
+        return result;
+    }
+
+    private void getWord(List<String> result, Node node, String prefix, int index) {
+        String word = prefix + (char) ('a' + index);
+        if (node.isLeaf()) {
+            result.add(word);
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (!node.isExisted(i)) {
+                continue;
+            }
+
+            getWord(result, node.getChild(i), word, i);
+        }
     }
 
     public boolean delete(String word) {
@@ -61,6 +99,10 @@ public class Trie {
         } else {
             return delete(word, lenght + 1, child);
         }
+    }
+
+    private int toInteger(char s) {
+        return s - 'a';
     }
 }
 
