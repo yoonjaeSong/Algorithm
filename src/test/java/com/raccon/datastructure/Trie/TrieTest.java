@@ -2,6 +2,10 @@ package com.raccon.datastructure.Trie;
 
 import org.junit.jupiter.api.*;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -47,7 +51,7 @@ class TrieTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     @DisplayName("delete 성공 테스트")
     public void deleteSuccessTest() {
         assertTrue(trie.delete("ted"));
@@ -60,12 +64,26 @@ class TrieTest {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     @DisplayName("delete 실패 테스티")
     public void deleteFailTest() {
         assertFalse(trie.delete("ted"));
         assertFalse(trie.delete("i"));
         assertFalse(trie.delete("a"));
         assertFalse(trie.delete("teeeeee"));
+    }
+
+    @Test
+    @Order(3)
+    @DisplayName("자동완성 테스트")
+    void autoCompleteTest() {
+        List<String> expect = new LinkedList<>();
+        expect.add("tea");
+        expect.add("ted");
+        expect.add("ten");
+        expect.add("to");
+
+        String word = "t";
+        assertEquals(expect, trie.autoComplete(word));
     }
 }
